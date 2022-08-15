@@ -7,14 +7,14 @@ print('Tao socket moi')
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.bind((ip, port))
     print('May chu dang nghe...')
-    s.listen()
+    s.listen(10)
     conn, addr = s.accept()
     print(f'Ket noi tu {addr} duoc thanh lap!!')
     with conn:
-        # i=1
+        i=1
         l = conn.recv(1024)
-        # i=i+1
         while (l):
-            with open('file'+".txt",'wb') as f:
+            with open('file'+ str(i)+".txt",'wb') as f:
                 f.write(l)
+            i=i+1
             l = conn.recv(1024)
